@@ -1,0 +1,36 @@
+{
+  "name": "zl-ng2-grid",
+  "version": "1.0.0",
+  "description": "simulate angular ui-grid. git:https://github.com/angular-ui/ui-grid.git",
+  "scripts": {
+    "start": "webpack-dev-server --progress",
+    "build": "webpack --config webpack.build.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@angular/common": "^2.3.1",
+    "@angular/compiler": "^2.3.1",
+    "@angular/core": "^2.3.1",
+    "@angular/platform-browser": "^2.3.1",
+    "@angular/platform-browser-dynamic": "^2.3.1",
+    "rxjs": "^5.5.8",
+    "zone.js": "^0.8.20"
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "^4.0.1",
+    "typescript": "^2.8.1",
+    "webpack": "^4.3.0",
+    "webpack-cli": "^2.0.13",
+    "webpack-dev-server": "^3.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loogon/zl-ng2-grid.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/loogon/zl-ng2-grid/issues"
+  },
+  "homepage": "https://github.com/loogon/zl-ng2-grid#readme"
+}
