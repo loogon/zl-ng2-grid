@@ -1,31 +1,17 @@
-var path = require("path");
+var path = require('path');
+var webpackMerge = require('webpack-merge');
+var webpackCommonConfig = require('./webpack.config.common');
+var DefinePlugin = require('webpack/lib/DefinePlugin');
+var ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 
-module.exports = {
-    entry: {
-        app: "./src/bootstrap.ts",
-        //lib: [path.resolve(__dirname, "vendors.ts")]
-    },
+module.exports = webpackMerge(webpackCommonConfig, {
+    devtool: 'cheap-module-eval-source-map',
 
     output: {
-        path: path.resolve(__dirname, "dist"),
-        filename: "[name].js",
-        publicPath: "http://localhost:9999/"
+        path: path.resolve(__dirname, 'dist'),
+        filename: '[name].js',
+        publicPath: '/'
     },
-
-    module: {
-        rules: [
-            {
-                test: /\.ts$/,
-                loader: "awesome-typescript-loader"
-            }
-        ]
-    },
-
-    resolve: {
-        extensions: [".ts", ".js"]
-    },
-
-    devtool: "cheap-module-eval-source-map",
 
     devServer: {
         historyApiFallback: true,
@@ -34,6 +20,9 @@ module.exports = {
     },
 
     plugins: [
-
+        new DefinePlugin({
+            'ENV': 'dev'
+        }),
+        new ExtractTextWebpackPlugin('[name].css')
     ]
-};
+});
