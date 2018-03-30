@@ -15,7 +15,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].[hash].js',
-        publicPath: '/'
+        publicPath: './'
     },
 
     module: {
@@ -62,7 +62,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(['dist']),
         new DefinePlugin({
-            'ENV': 'prod'
+            'ENV': '"prod"'
         }),
         new HtmlWebpackPlugin({
             title: 'zl-ng2-grid test',
@@ -76,7 +76,7 @@ module.exports = {
             }
         }),
         new webpack.optimize.CommonsChunkPlugin({
-            name: ['polyfills', 'lib', 'app']
+            name: ['app', 'lib', 'polyfills']
         })
     ]
 };

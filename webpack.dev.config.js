@@ -1,17 +1,57 @@
 var path = require('path');
-var webpackMerge = require('webpack-merge');
-var webpackCommonConfig = require('./webpack.config.common');
+var webpack = require('webpack');
 var DefinePlugin = require('webpack/lib/DefinePlugin');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 
-module.exports = webpackMerge(webpackCommonConfig, {
-    devtool: 'cheap-module-eval-source-map',
+module.exports = {
+    entry: {
+        polyfills: './src/polyfills.ts',
+        app: './src/bootstrap.ts',
+        lib: [path.resolve(__dirname, 'src', 'vendors.ts')]
+    },
 
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].js',
-        publicPath: '/'
+        publicPath: 'http://localhost:9999/'
     },
+
+    module: {
+        rules: [{
+                test: /\.ts$/,
+                loader: [
+                    'awesome-typescript-loader',
+                    'angular2-template-loader'
+                ]
+            },
+            {
+                test: /\.html$/,
+                loader: 'html-loader',
+                include: path.join(__dirname, 'src/app')
+            },
+            {
+                test: /\.css$/,
+                exclude: [path.join(__dirname, 'src/app'), path.join(__dirname, 'src/wd-grid')],
+                loader: ExtractTextWebpackPlugin.extract({
+                    fallback: 'style-loader',
+                    use: 'css-loader'
+                })
+            },
+            {
+                test: /\.css$/,
+                include: path.join(__dirname, 'src/app'),
+                loader: 'raw-loader'
+            }
+        ]
+    },
+
+    resolve: {
+        extensions: ['.ts', '.js']
+    },
+
+    devtool: 'cheap-module-eval-source-map',
 
     devServer: {
         historyApiFallback: true,
@@ -20,9 +60,17 @@ module.exports = webpackMerge(webpackCommonConfig, {
     },
 
     plugins: [
+        new CleanWebpackPlugin(['dist']),
         new DefinePlugin({
-            'ENV': 'dev'
+            'ENV': '"dev"'
         }),
-        new ExtractTextWebpackPlugin('[name].css')
+        new HtmlWebpackPlugin({
+            title: 'zl-ng2-grid test',
+            template: 'src/index.html'
+        }),
+        new ExtractTextWebpackPlugin('[name].css'),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: ['app', 'lib', 'polyfills']
+        })
     ]
-});
+};
