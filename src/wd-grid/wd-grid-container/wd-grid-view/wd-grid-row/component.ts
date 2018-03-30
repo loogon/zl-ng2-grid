@@ -1,16 +1,16 @@
 import { Component, OnInit } from "@angular/core";
 
 @Component({
-    selector: 'wd-grid-footer',
+    selector: 'wd-grid-row',
     templateUrl: './component.html',
     styleUrls: ['./component.css']
 })
-export class WDGridFooterComponent extends OnInit {
+export class WDGridRowComponent extends OnInit {
     constructor() {
         super();
     }
 
     ngOnInit() {
-
+        
     }
 }
