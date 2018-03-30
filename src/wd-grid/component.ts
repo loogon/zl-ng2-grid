@@ -11,6 +11,12 @@ export class WDGridComponent extends OnInit {
     gridOption: any;
 
     ngOnInit() {
+        $('button').on('click', (event) => {
+            this.showGrid();
+        });
+    }
 
+    showGrid() {
+        alert('show grid');
     }
 }

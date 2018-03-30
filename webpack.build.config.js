@@ -15,7 +15,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].[hash].js',
-        publicPath: './'
+        publicPath: '/'
     },
 
     module: {
@@ -29,7 +29,11 @@ module.exports = {
             {
                 test: /\.html$/,
                 loader: 'html-loader',
-                include: path.join(__dirname, 'src/app')
+                include: path.join(__dirname, 'src')
+            },
+            {
+                include: path.join(__dirname, 'node_modules/font-awesome/fonts'),
+                loader: 'file-loader?name=fonts/[name].[ext]'
             },
             {
                 test: /\.css$/,
@@ -41,7 +45,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                include: path.join(__dirname, 'src/app'),
+                include: path.join(__dirname, 'src'),
                 loader: 'raw-loader'
             }
         ]
@@ -68,12 +72,16 @@ module.exports = {
             title: 'zl-ng2-grid test',
             template: 'src/index.html'
         }),
-        new ExtractTextWebpackPlugin('[name].[hash].css'),
+        new ExtractTextWebpackPlugin('css/[name].[hash].css'),
         new webpack.optimize.UglifyJsPlugin({
             comments: false,
             compress: {
                 warnings: false
             }
+        }),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery'
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: ['app', 'lib', 'polyfills']
