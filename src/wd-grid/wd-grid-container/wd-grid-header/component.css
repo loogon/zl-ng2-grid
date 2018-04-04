@@ -1,3 +1,8 @@
 .wd-grid-header {
     
 }
+
+.wd-grid-header-view {
+    background-color: darkgrey;
+    display: flex;
+}

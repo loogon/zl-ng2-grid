@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
     selector: 'wd-grid-header-cell',
@@ -6,6 +6,9 @@ import { Component, OnInit } from "@angular/core";
     styleUrls: ['./component.css']
 })
 export class WDGridHeaderCellComponent extends OnInit {
+    @Input()
+    gridHeaderCell: any;
+
     constructor() {
         super();
     }

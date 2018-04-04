@@ -7,6 +7,7 @@ import { WDGridHeaderCellComponent } from "./wd-grid-container/wd-grid-header/wd
 import { WDGridViewComponent } from "./wd-grid-container/wd-grid-view/component";
 import { WDGridFooterComponent } from "./wd-grid-container/wd-grid-footer/component";
 import { WDGridRowComponent } from "./wd-grid-container/wd-grid-view/wd-grid-row/component";
+import { WDGridOptions } from "./wd-grid-custom-types/wd-grid-options";
 
 @NgModule({
     imports: [BrowserModule],
@@ -19,7 +20,7 @@ import { WDGridRowComponent } from "./wd-grid-container/wd-grid-view/wd-grid-row
         WDGridViewComponent,
         WDGridFooterComponent
     ],
-    providers: [],
+    providers: [WDGridOptions],
     exports: [
         WDGridComponent,
         WDGridContainerComponent,

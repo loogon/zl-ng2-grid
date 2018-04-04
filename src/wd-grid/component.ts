@@ -1,5 +1,5 @@
-import {Component, OnInit, Input, Output, EventEmitter} from "@angular/core";
-
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { WDGridOptions } from './wd-grid-custom-types/wd-grid-options';
 
 @Component({
     selector: 'wd-grid',
@@ -10,7 +10,13 @@ export class WDGridComponent extends OnInit {
     @Input()
     gridOption: any;
 
+    constructor(private gridOpt: WDGridOptions) {
+        super();
+    }
+
     ngOnInit() {
+        this.gridOption = this.gridOpt.initialize(this.gridOption);
+        
         $('button').on('click', (event) => {
             this.showGrid();
         });

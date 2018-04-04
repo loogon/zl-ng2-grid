@@ -7,9 +7,26 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
     name: string;
+    gridOption: any;
     constructor() {
         this.name = 'test';
         this.showName();
+        this.gridOption = {
+            gridContainer: {
+                gridHeader: {
+                    gridHeaderCellList: [
+                        {
+                            name: 'name',
+                            field: 'string'
+                        },
+                        {
+                            name: 'status',
+                            field: 'string'
+                        }
+                    ]
+                }
+            }
+        };
     }
 
     showName() {

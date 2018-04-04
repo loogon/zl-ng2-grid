@@ -1,7 +1,5 @@
 <div class="wd-grid-header">
-    <div>
-        <div *ngFor="let column of header.columnList;">
-            <wd-grid-header-cell></wd-grid-header-cell>
-        </div>
+    <div class="wd-grid-header-view">
+        <wd-grid-header-cell [gridHeaderCell]="headerCell" *ngFor="let headerCell of gridHeader.gridHeaderCellList;"></wd-grid-header-cell>
     </div>
 </div>

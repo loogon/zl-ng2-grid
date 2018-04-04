@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
     selector: 'wd-grid-container',
@@ -6,6 +6,9 @@ import { Component, OnInit } from "@angular/core";
     styleUrls: ['./component.css']
 })
 export class WDGridContainerComponent extends OnInit {
+    @Input()
+    gridContainer: any;
+    
     constructor() {
         super();
     }

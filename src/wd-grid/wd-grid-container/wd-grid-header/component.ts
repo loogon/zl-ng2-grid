@@ -6,10 +6,11 @@ import { Component, OnInit, Input } from "@angular/core";
     styleUrls: ['./component.css']
 })
 export class WDGridHeaderComponent extends OnInit {
-    header: any = {};
+    @Input()
+    gridHeader: any;
+    
     constructor() {
         super();
-        this.header.columnList = [];
     }
 
     ngOnInit() {
